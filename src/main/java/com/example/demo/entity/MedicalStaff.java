@@ -27,18 +27,18 @@ public class MedicalStaff extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private MedicalType medicalType;
-/*
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "clinic_id")
     private Clinic clinic;
-*/
+
     @ManyToMany(cascade = CascadeType.DETACH)
     @JoinTable(name = "medical_patient",
             joinColumns = @JoinColumn(name = "medical_id"),
             inverseJoinColumns = @JoinColumn(name = "patient_id")
     )
     private Set<Patient> patients;
-/*
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "medicalStaff", cascade = CascadeType.ALL)
     private List<Calendar> calendars;
 
@@ -48,12 +48,12 @@ public class MedicalStaff extends BaseEntity {
 
     @OneToMany(mappedBy = "nurse",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     Set<Recipe> recipes = new HashSet<>();
-*/
+
     private LocalTime startWorkAt;
 
     private LocalTime endWorkAt;
-/*
+
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Grade> grades;
- */
+
 }

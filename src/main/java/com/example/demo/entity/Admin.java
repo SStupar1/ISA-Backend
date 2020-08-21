@@ -16,20 +16,16 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class Admin extends BaseEntity {
 
-    @Version
-    @Column(name="version",columnDefinition = "integer DEFAULT 0",nullable = false)
-    private int version;
-
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     @Enumerated(EnumType.STRING)
     private AdminType adminType;
-/*
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "clinic_id")
     private Clinic clinic;
-*/
+
 
 }

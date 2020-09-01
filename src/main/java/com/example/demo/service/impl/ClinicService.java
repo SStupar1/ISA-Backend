@@ -15,9 +15,6 @@ import com.example.demo.repository.IErAppointmentPeriodRepository;
 import com.example.demo.service.IClinicCenterService;
 import com.example.demo.service.IClinicService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;

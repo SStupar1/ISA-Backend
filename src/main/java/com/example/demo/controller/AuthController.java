@@ -4,10 +4,8 @@ import com.example.demo.dto.request.CreatePatientRequest;
 import com.example.demo.dto.request.LoginRequest;
 import com.example.demo.dto.response.LoginResponse;
 import com.example.demo.dto.response.PatientResponse;
-import java.util.UUID;
 
 
-import com.example.demo.service.IAuthService;
 import com.example.demo.service.IPatientService;
 import org.springframework.web.bind.annotation.*;
 

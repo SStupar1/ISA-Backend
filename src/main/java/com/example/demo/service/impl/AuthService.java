@@ -1,6 +1,8 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.dto.request.FirstLoginPasswordRequest;
 import com.example.demo.dto.request.LoginRequest;
+import com.example.demo.dto.request.UpdatePasswordRequest;
 import com.example.demo.dto.response.ClinicResponse;
 import com.example.demo.dto.response.LoginResponse;
 import com.example.demo.dto.response.UserResponse;
@@ -13,6 +15,7 @@ import com.example.demo.repository.IPatientRepository;
 import com.example.demo.repository.IUserRepository;
 import com.example.demo.security.DomainUserDetailsService;
 import com.example.demo.service.IAuthService;
+import com.example.demo.service.IClinicService;
 import com.example.demo.service.ITokenProvider;
 import com.example.demo.utils.enums.UserType;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -34,6 +37,8 @@ public class AuthService implements IAuthService {
 
     private final IMedicalStaffRepository _medicalStaffRepository;
 
+    private final IClinicService _clinicService;
+
     private final IAdminRepository _adminRepository;
 
     private final AuthenticationManager _authenticationManager;
@@ -48,11 +53,12 @@ public class AuthService implements IAuthService {
                        IPatientRepository patientRepository,
                        DomainUserDetailsService domainUserDetailsService,
                        AuthenticationManager authenticationManager, ITokenProvider tokenProvider,
-                       IMedicalStaffRepository medicalStaffRepository,
+                       IMedicalStaffRepository medicalStaffRepository, IClinicService clinicService,
                        IAdminRepository adminRepository) {
         _passwordEncoder = passwordEncoder;
         _userRepository = userRepository;
         _medicalStaffRepository = medicalStaffRepository;
+        _clinicService = clinicService;
         _adminRepository = adminRepository;
         _patientRepository = patientRepository;
         _domainUserDetailsService = domainUserDetailsService;
@@ -97,82 +103,82 @@ public class AuthService implements IAuthService {
         return loginResponse;
     }
 
-//    @Override
-//    public LoginResponse setNewPasswordOnFirstLoginMedical(UUID id, FirstLoginPasswordRequest request) throws Exception {
-//        if (!request.getPassword().equals(request.getRePassword())) {
-//            throw new Exception("Lozinke koje ste uneli se ne podudaraju!");
-//        }
-//
-//        MedicalStaff medicalStaff = _medicalStaffRepository.findOneById(id);
-//        User user = medicalStaff.getUser();
-//
-//        user.setPassword(_passwordEncoder.encode(request.getPassword()));
-//        user.setFirstTimeLoggedIn(new Date());
-//
-//        _medicalStaffRepository.save(medicalStaff);
-//
-//
-//        UserResponse userResponse = mapUserToUserResponse(user);
-//
-//        LoginResponse loginResponse = new LoginResponse();
-//        loginResponse.setUser(userResponse);
-//
-//        return loginResponse;
-//    }
-//
-//    @Override
-//    public LoginResponse setNewPasswordOnFirstLoginAdmin(UUID id, FirstLoginPasswordRequest request) throws Exception {
-//        if (!request.getPassword().equals(request.getRePassword())) {
-//            throw new Exception("Lozinke koje ste uneli se ne podudaraju!");
-//        }
-//
-//        Admin admin = _adminRepository.findOneById(id);
-//        User user = admin.getUser();
-//
-//        user.setPassword(_passwordEncoder.encode(request.getPassword()));
-//        user.setFirstTimeLoggedIn(new Date());
-//
-//        _adminRepository.save(admin);
-//
-//
-//        UserResponse userResponse = mapUserToUserResponse(user);
-//
-//        LoginResponse loginResponse = new LoginResponse();
-//        loginResponse.setUser(userResponse);
-//
-//        return loginResponse;
-//    }
-//
-//    @Override
-//    public void updatePasswordMedicalStaff(UUID id, UpdatePasswordRequest request) throws Exception {
-//        if (!request.getPassword().equals(request.getRePassword())) {
-//            throw new Exception("Lozinke koje ste uneli se ne podudaraju!");
-//        }
-//
-//        MedicalStaff medicalStaff = _medicalStaffRepository.findOneById(id);
-//
-//        User user = medicalStaff.getUser();
-//
-//        user.setPassword(_passwordEncoder.encode(request.getPassword()));
-//
-//        _userRepository.save(user);
-//    }
-//
-//    @Override
-//    public void updatePasswordAdmin(UUID id, UpdatePasswordRequest request) throws Exception {
-//        if (!request.getPassword().equals(request.getRePassword())) {
-//            throw new Exception("Lozinke koje ste uneli se ne podudaraju!");
-//        }
-//
-//        Admin admin = _adminRepository.findOneById(id);
-//
-//        User user = admin.getUser();
-//
-//        user.setPassword(_passwordEncoder.encode(request.getPassword()));
-//
-//        _userRepository.save(user);
-//    }
-//
+    @Override
+    public LoginResponse setNewPasswordOnFirstLoginMedical(UUID id, FirstLoginPasswordRequest request) throws Exception {
+        if (!request.getPassword().equals(request.getRePassword())) {
+            throw new Exception("Lozinke koje ste uneli se ne podudaraju!");
+        }
+
+        MedicalStaff medicalStaff = _medicalStaffRepository.findOneById(id);
+        User user = medicalStaff.getUser();
+
+        user.setPassword(_passwordEncoder.encode(request.getPassword()));
+        user.setFirstTimeLoggedIn(new Date());
+
+        _medicalStaffRepository.save(medicalStaff);
+
+
+        UserResponse userResponse = mapUserToUserResponse(user);
+
+        LoginResponse loginResponse = new LoginResponse();
+        loginResponse.setUser(userResponse);
+
+        return loginResponse;
+    }
+
+    @Override
+    public LoginResponse setNewPasswordOnFirstLoginAdmin(UUID id, FirstLoginPasswordRequest request) throws Exception {
+        if (!request.getPassword().equals(request.getRePassword())) {
+            throw new Exception("Lozinke koje ste uneli se ne podudaraju!");
+        }
+
+        Admin admin = _adminRepository.findOneById(id);
+        User user = admin.getUser();
+
+        user.setPassword(_passwordEncoder.encode(request.getPassword()));
+        user.setFirstTimeLoggedIn(new Date());
+
+        _adminRepository.save(admin);
+
+
+        UserResponse userResponse = mapUserToUserResponse(user);
+
+        LoginResponse loginResponse = new LoginResponse();
+        loginResponse.setUser(userResponse);
+
+        return loginResponse;
+    }
+
+    @Override
+    public void updatePasswordMedicalStaff(UUID id, UpdatePasswordRequest request) throws Exception {
+        if (!request.getPassword().equals(request.getRePassword())) {
+            throw new Exception("Lozinke koje ste uneli se ne podudaraju!");
+        }
+
+        MedicalStaff medicalStaff = _medicalStaffRepository.findOneById(id);
+
+        User user = medicalStaff.getUser();
+
+        user.setPassword(_passwordEncoder.encode(request.getPassword()));
+
+        _userRepository.save(user);
+    }
+
+    @Override
+    public void updatePasswordAdmin(UUID id, UpdatePasswordRequest request) throws Exception {
+        if (!request.getPassword().equals(request.getRePassword())) {
+            throw new Exception("Lozinke koje ste uneli se ne podudaraju!");
+        }
+
+        Admin admin = _adminRepository.findOneById(id);
+
+        User user = admin.getUser();
+
+        user.setPassword(_passwordEncoder.encode(request.getPassword()));
+
+        _userRepository.save(user);
+    }
+
     private UserResponse mapUserToUserResponse(User user) throws Exception {
         UserResponse userResponse = new UserResponse();
         userResponse.setEmail(user.getEmail());
@@ -181,16 +187,16 @@ public class AuthService implements IAuthService {
         if (user.getUserType().equals(UserType.PATIENT)) {
             id = user.getPatient().getId();
         } else if (user.getUserType().equals(UserType.MEDICAL)) {
-             id = user.getMedicalStaff().getId();
-             clinicId = user.getMedicalStaff().getClinic().getId();
+            id = user.getMedicalStaff().getId();
+            clinicId = user.getMedicalStaff().getClinic().getId();
         } else if (user.getUserType().equals(UserType.ADMIN)) {
             id = user.getAdmin().getId();
             clinicId = user.getAdmin().getClinic().getId();
             userResponse.setAdminType(user.getAdmin().getAdminType());
         }
         if(user.getUserType().equals(UserType.ADMIN) || user.getUserType().equals(UserType.MEDICAL)) {
-//            ClinicResponse clinicResponse = _clinicService.getClinic(clinicId);
-//            userResponse.setMyClinic(clinicResponse);
+            ClinicResponse clinicResponse = _clinicService.getClinic(clinicId);
+            userResponse.setMyClinic(clinicResponse);
         }
         userResponse.setUserId(user.getId());
         userResponse.setId(id);

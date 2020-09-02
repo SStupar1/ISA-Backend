@@ -46,7 +46,6 @@ public class ClinicService implements IClinicService {
         ClinicCenterResponse clinicCenterResponse = _clinicCenterService.createClinicCenter(clinicCenterRequest);
         // Transform to user entity
         ClinicCenter clinicCenter = _clinicCenterRepository.findOneById(clinicCenterResponse.getId());
-        //user.setId(userResponse.getId());
 
         Clinic clinic = new Clinic();
         clinic.setClinicCenter(clinicCenter);

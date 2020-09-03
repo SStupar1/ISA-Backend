@@ -1,0 +1,18 @@
+<nz-date-picker [(ngModel)]="date"></nz-date-picker>
+
+  <br />
+  <br />
+
+<nz-time-picker [(ngModel)]="time" [nzDefaultOpenValue]="defaultOpenValue"></nz-time-picker>
+
+<br />
+<br />
+
+<form [formGroup]="validateForm">
+  <input nz-input formControlName="email" id="email" placeholder="email pacijenta" />
+</form>
+
+<br />
+<br />
+
+<button (click)="onSchedule()" nz-button nzType="primary" nzGhost>Zakazi</button>

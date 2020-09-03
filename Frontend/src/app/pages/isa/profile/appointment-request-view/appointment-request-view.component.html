@@ -1,0 +1,61 @@
+<div class="firstLoginWrapper">
+  <form nz-form [formGroup]="validateForm" class="first-login-form" (ngSubmit)="submitForm()">
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="appointmentDate" nzRequired>
+        <span>
+          Datum
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="appointmentDate" formControlName="appointmentDate"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="localTime" nzRequired>
+        <span>
+          Vreme
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="localTime" formControlName="localTime"/>
+      </nz-form-control>
+    </nz-form-item>
+      
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="appointmentTypeName" nzRequired>
+        <span>
+          Tip pregleda
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="appointmentTypeName" formControlName="appointmentTypeName"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="clinicName" nzRequired>
+        <span>
+          Klinika
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="clinicName" formControlName="clinicName"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="doctorName" nzRequired>
+        <span>
+          Doktor
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="doctorName" formControlName="doctorName"/>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  <br/>
+  <button (click)="confirm()" nz-button nzType="primary" nzGhost>Potvrdi</button>
+  <button (click)="cancel()" nz-button nzType="danger" nzGhost>Otkazi</button>

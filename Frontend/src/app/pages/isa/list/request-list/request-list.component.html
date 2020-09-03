@@ -1,0 +1,24 @@
+<nz-table #basicTable [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th>Ime</th>
+      <th>Prezime</th>
+      <th>Email</th>
+      <th> </th>
+      <th> </th>      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td *ngIf="data.status === 'PENDING'">{{ data.firstName }}</td>
+      <td *ngIf="data.status === 'PENDING'">{{ data.lastName }}</td>
+      <td *ngIf="data.status === 'PENDING'">{{ data.email }}</td>
+      <td *ngIf="data.status === 'PENDING'">
+        <button (click)="approveRequest(data.id)" nz-button nzType="primary" nzGhost>Potvrdi</button>
+      </td>
+      <td *ngIf="data.status === 'PENDING'">
+        <button (click)="denyRequest(data.id)" nz-button nzType="danger" nzGhost>Odbij</button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

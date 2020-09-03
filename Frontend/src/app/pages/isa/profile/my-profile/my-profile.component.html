@@ -1,0 +1,3 @@
+<app-medical [isReadOnly]="false"  *ngIf="type === 'MEDICAL'" ></app-medical>
+<app-patient [isReadOnly]="false" *ngIf="type === 'PATIENT'"></app-patient>
+<app-admin [isReadOnly]="false" *ngIf="type === 'ADMIN'"></app-admin>

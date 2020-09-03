@@ -1,0 +1,5 @@
+<nz-date-picker [(ngModel)]="startAt" (ngModelChange)="onChange($event)"></nz-date-picker>
+
+<nz-date-picker [(ngModel)]="endAt" (ngModelChange)="onChange($event)"></nz-date-picker>
+
+<button nz-button nzType="primary" (click)="scheduleVacation()" nzGhost>Potvrdi</button>

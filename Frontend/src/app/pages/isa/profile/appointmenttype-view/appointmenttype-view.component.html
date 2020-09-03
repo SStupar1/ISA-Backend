@@ -1,0 +1,28 @@
+<div class="firstLoginWrapper">
+  <form nz-form [formGroup]="validateForm" class="first-login-form" (ngSubmit)="submitForm()">
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>
+        <span>
+          Naziv
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="name" formControlName="name"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="price" nzRequired>
+        <span>
+          Cena
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="price" formControlName="price"/>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  <br/>
+  <button (click)="edit()" nz-button nzType="primary" nzGhost>Potvrdi</button>
+</div>

@@ -1,0 +1,33 @@
+<div class="forma">
+  <form>
+      <h1 class="title">Dodavanje leka</h1>
+      <div class="form-group row">
+          <label for="medicine" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-5">
+              <input type="text" class="form-control" id="medicine" [(ngModel)]="medicine" name="medicine">
+          </div>
+      </div>
+      <div class="form-group row">
+          <div class="col-sm-2">
+              <button (click)="addMedicine()" class="btn btn-primary">Confirm</button>
+          </div>
+      </div>
+  </form>
+</div>
+<div class="forma">
+  <form>
+      <h1 class="title">Dodavanje dijagnoze</h1>
+      <div class="form-group row">
+          <label for="diagnosis" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-5">
+              <input type="text" class="form-control" id="diagnosis" [(ngModel)]="diagnosis" name="diagnosis">
+          </div>
+      </div>
+
+      <div class="form-group row">
+          <div class="col-sm-2">
+              <button (click)="addDiagnosis()" class="btn btn-primary">Confirm</button>
+          </div>
+      </div>
+  </form>
+</div>

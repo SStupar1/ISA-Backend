@@ -1,0 +1,43 @@
+<nz-table #basicTable [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th>Broj</th>
+      <th>Naziv</th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.number }}</td>
+      <td>{{ data.name }}</td>
+      <td>
+        <!-- <a (click)="onEdit(data.id)">Izmeni</a> -->
+        <button (click)="onEdit(data.id)" nz-button nzType="primary" nzGhost>Izmeni</button>
+      </td>
+      <td>
+        <button (click)="onDelete(data.id)" nz-button nzType="danger" nzGhost>Ukloni</button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+
+<div class="ant-input-affix-wrapper">
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+      <input type="text" formControlName="name" nz-input placeholder="naziv" />
+    </nz-input-group>
+    
+    <br />
+    <br />
+
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+      <input type="text" formControlName="price" nz-input placeholder="cena" />
+    </nz-input-group>
+    
+    <br />
+    <br />
+    
+    <button nz-button nzType="primary" [disabled]="!form.valid" nzGhost>Pretrazi</button>
+  </form>
+</div>

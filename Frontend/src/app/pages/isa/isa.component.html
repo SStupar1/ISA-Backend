@@ -1,0 +1,137 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a target="_blank">
+        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+        <h1>Klinicki centar</h1>
+      </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+        <ul>
+          <li *ngIf="checkRole([adminRole]) && !isSuperAdmin" nz-menu-item nzMatchRouter>
+            <a (click)="onMedical()">Medicinsko osoblje</a>
+          </li>
+          <li *ngIf="checkRole([adminRole])" nz-menu-item nzMatchRouter>
+            <a (click)="onLekoviDijagnoze()">Dodaj lekove i dijagnoze</a> 
+          </li>
+          <li *ngIf="checkRole([adminRole]) && !isSuperAdmin" nz-menu-item nzMatchRouter>
+            <a (click)="onAddDoctor()">Dodaj lekara</a>
+          </li>
+          <li *ngIf="checkRole([adminRole]) && !isSuperAdmin" nz-menu-item nzMatchRouter>
+            <a (click)="onAddNurse()">Dodaj medicinsku sestru</a>
+          </li>
+          <li *ngIf="isSuperAdmin" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/medicalstaff">Medicinsko osoblje</a>
+          </li>
+          <!-- <li *ngIf="checkRole([adminRole]) && !isSuperAdmin" nz-menu-item nzMatchRouter>
+            <a (click)="onPatients()">Pacijenti</a>
+          </li> -->
+          <li *ngIf="checkRole([medicalStaffRole])" nz-menu-item nzMatchRouter>
+            <a (click)="onPatientsByMedical()">Pacijenti</a>
+          </li>
+          <!-- <li *ngIf="checkRole([adminRole, medicalStaffRole]) && !isSuperAdmin" nz-menu-item nzMatchRouter>
+            <a (click)="onRecipes()">Pacijenti</a>
+          </li> -->
+          <li *ngIf="isSuperAdmin" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/patients">Pacijenti</a>
+          </li>
+          <li *ngIf="isSuperAdmin" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/admins">Administratori</a>
+          </li>
+          <li *ngIf="isSuperAdmin" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/clinics">Klinike</a>
+          </li>
+          <li *ngIf="checkRole([adminRole]) && !isSuperAdmin" nz-menu-item nzMatchRouter>
+            <a (click)="onClick()">Sale</a>
+          </li>
+          <li *ngIf="checkRole([adminRole]) && !isSuperAdmin" nz-menu-item nzMatchRouter>
+            <a (click)="addEr()">Kreiraj salu</a>
+          </li>
+          <li *ngIf="checkRole([adminRole]) && !isSuperAdmin" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/create-predef-appointment">Kreiraj pregled</a>
+          </li>
+          <li *ngIf="checkRole([patientRole])" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/create-appointment-request">Zakazi pregled</a>
+          </li>
+          <li *ngIf="checkRole([medicalStaffRole])" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/vacation-request">Godisnji odmor</a>
+          </li>
+          <li *ngIf="checkRole([patientRole])" nz-menu-item nzMatchRouter>
+            <a (click)="medicalRecord()">Zdravstveni karton</a>
+          </li>
+          <li *ngIf="checkRole([patientRole])" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/predef-appointments">Predefinisani pregledi</a>
+          </li>
+          <li *ngIf="checkRole([medicalStaffRole])" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/doctor/add-appointment">Zakazi pregled</a>
+          </li>
+          <li *ngIf="checkRole([adminRole]) && !isSuperAdmin" nz-menu-item nzMatchRouter>
+            <a (click)="onViewRequests()">Zahtevi za pregled</a>
+          </li>
+          <li *ngIf="checkRole([patientRole])" nz-menu-item nzMatchRouter>
+            <a (click)="onViewRequestsByPatient()">Zahtevi za pregled</a>
+          </li>
+          <li *ngIf="checkRole([patientRole])" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/price-list">Cenovnik</a>
+          </li>
+          <li *ngIf="checkRole([patientRole])" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/old-appointments">Istorijat pregleda</a>
+          </li>
+          <li *ngIf="checkRole([adminRole])" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/appointment-types">Tipovi pregleda</a>
+          </li>
+          <li *ngIf="checkRole([adminRole])" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/create-appointment-type">Kreiraj tip pregleda</a>
+          </li>
+          <li *ngIf="checkRole([patientRole])" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/my-doctors">Moji doktori</a>
+          </li>
+          <li *ngIf="checkRole([patientRole])" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/my-clinics">Moje klinike</a>
+          </li>
+          <!-- <li *ngIf="checkRole([adminRole])" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/create-admin">Dodaj admina</a>
+          </li>
+          <li *ngIf="checkRole([adminRole])" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/create-clinic">Dodaj kliniku</a>
+          </li> -->
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+        <ul>
+          <li *ngIf="checkRole([adminRole]) && !isSuperAdmin" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/my-clinic-profile">Profil klinike</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/my-profile">Moj profil</a>
+          </li>
+          <li *ngIf="checkRole([medicalStaffRole])" nz-menu-item nzMatchRouter>
+            <a (click)="onUpdatePasswordMedical()">Promeni lozinku</a>
+          </li>
+          <li *ngIf="checkRole([adminRole])" nz-menu-item nzMatchRouter>
+            <a (click)="onUpdatePasswordAdmin()">Promeni lozinku</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a (click)="clearStorage()" routerLink="/auth/login">Odjavi se</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content style="min-height: 100%;">
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

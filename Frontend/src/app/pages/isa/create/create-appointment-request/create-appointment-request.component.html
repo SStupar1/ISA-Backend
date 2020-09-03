@@ -1,0 +1,96 @@
+<nz-date-picker [(ngModel)]="date"></nz-date-picker>
+
+  <br />
+  <br />
+
+<nz-time-picker [(ngModel)]="time" [nzDefaultOpenValue]="defaultOpenValue"></nz-time-picker>
+    
+  <br />
+  <br />
+
+<nz-select
+  style="width: 200px;"
+  nzShowSearchselectedType
+  nzAllowClear
+  nzPlaceHolder="Izaberite tip pregleda"
+  [(ngModel)]="selectedType"
+>
+<nz-option *ngFor="let item of listOfData" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
+</nz-select>
+
+<br />
+<br />
+
+<button (click)="onSearch()" nz-button nzType="primary" nzGhost>Pretrazi</button>
+
+<br/>
+<br/>
+<!-- <br/>
+<br/> -->
+
+<nz-table *ngIf="!isVisible" #basicTable [nzData]="listOfData2">
+  <thead>
+    <tr>
+      <th>Ime</th>
+      <th>Adresa</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.name }}</td>
+      <td>{{ data.address }}</td>
+      <td>
+        <!-- <a (click)="onChoose(data)">Izaberi</a> -->
+        <button (click)="onChoose(data)" nz-button nzType="primary" nzGhost>Izaberi</button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+
+<br/>
+<br/>
+
+<div *ngIf="isVisible">
+  <nz-table #basicTable [nzData]="listOfData3">
+    <thead>
+      <tr>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.firstName }}</td>
+        <td>{{ data.lastName }}</td>
+        <td>
+          <button (click)="onSchedule(data)" nz-button nzType="primary" nzGhost>Izaberi</button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
+
+<!-- <div *ngIf="isVisible" class="ant-input-affix-wrapper">
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+      <input type="text" formControlName="firstName" nz-input placeholder="ime" />
+    </nz-input-group>
+    
+    <br />
+    <br />
+
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+      <input type="text" formControlName="lastName" nz-input placeholder="prezime" />
+    </nz-input-group>
+    
+    <br />
+    <br />
+    
+    <button nz-button nzType="primary" [disabled]="!form.valid" nzGhost>Pretrazi</button>
+  </form>
+</div> -->
+
+
+

@@ -1,0 +1,33 @@
+<nz-table #basicTable [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th>Datum</th>
+      <th> </th>
+      <th> </th>      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td *ngIf="!isPatient && data.status=='PENDING'">{{ formatDate(data.appointmentDate) }}</td>
+      <td *ngIf="isPatient && data.status=='CONFIRMED'">{{ formatDate(data.appointmentDate) }}</td>
+      <!-- <td>
+        <button (click)="approveRequest(data.id)" nz-button nzType="primary" nzGhost>Potvrdi</button>
+      </td>
+      <td>
+        <button nz-button nzType="danger" nzGhost>Odbij</button>
+      </td> -->
+      <td *ngIf="!isPatient && data.status=='PENDING'">
+        <!-- <a (click)="onAssign(data.id)">Dodeli salu</a> -->
+        <button (click)="onAssign(data.id)" nz-button nzType="primary" nzGhost>Dodeli salu</button>
+      </td>
+      <td *ngIf="isPatient && data.status=='CONFIRMED'">
+        <!-- <a (click)="onAssign(data.id)">Dodeli salu</a> -->
+        <button (click)="onApproveRequest(data.id)" nz-button nzType="primary" nzGhost>Potvrdi</button>
+      </td>
+      <td *ngIf="isPatient && data.status=='CONFIRMED'">
+        <!-- <a (click)="onAssign(data.id)">Dodeli salu</a> -->
+        <button (click)="onDenyRequest(data.id)" nz-button nzType="danger" nzGhost>Odbij</button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

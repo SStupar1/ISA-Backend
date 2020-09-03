@@ -1,0 +1,59 @@
+<div class="prvi">
+  <div class="podaci">
+      Ime: {{firstName}}<br>Prezime: {{lastName}}<br>JMBG: {{jmbg}}
+  </div>
+</div>
+<hr>
+<div class="drugi">
+  <table>
+      <tr>
+          <td>Visina:</td>
+          <td><input type="text" [(ngModel)]="height" [disabled]="disabledp"></td>
+      </tr>
+      <tr>
+          <td>Tezina:</td>
+          <td><input type="text" [(ngModel)]="weight" [disabled]="disabledp"></td>
+      </tr>
+      <tr>
+          <td>Alergije:</td>
+          <td><input type="text" [(ngModel)]="alergies" [disabled]="disabledp"></td>
+      </tr>
+      <tr>
+          <td>Dioptrija:</td>
+          <td><input type="text" [(ngModel)]="diopter" [disabled]="disabledp"></td>
+      </tr>
+      <tr>
+          <td>Krvna grupa:</td>
+          <td><input type="text" [(ngModel)]="bloodType" [disabled]="disabledp"></td>
+      </tr>
+      <tr>
+          <td><button (click)="izmeni()">Izmeni</button></td>
+          <td><button (click)="sacuvaj()">Sacuvaj izmene</button></td>
+      </tr>
+  </table>
+</div>
+<hr>
+<div class="treci">
+  Izvestaji o pregledima:
+  <table class="table">
+      <thead>
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Opis</th>
+              <th scope="col">Prepisan lek</th>
+              <th scope="col">Dijagnoza</th>
+          </tr>
+      </thead>
+      <tbody>
+          <ng-container *ngFor="let me of medicalExaminations; let i = index">
+              <tr>
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{me.description}}</td>
+                  <td>{{me.medicine}}</td>
+                  <td>{{me.diagnosis}}</td>
+              </tr>
+          </ng-container>
+      </tbody>
+  </table>
+
+</div>

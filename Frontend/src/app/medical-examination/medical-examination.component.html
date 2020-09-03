@@ -1,0 +1,42 @@
+<div class="forma" *ngIf="initialized()">
+  <form>
+      <h1 class="title">Popunjavanje izvestaja o pregledu</h1>
+      <div class="form-group row">
+          <label for="descrpition" class="col-sm-2 col-form-label">Opis</label>
+          <div class="col-md-5">
+              <textarea type="text" class="form-control" id="description" placeholder="description"
+                  [(ngModel)]="description" name="description" rows="10" cols="30"></textarea>
+          </div>
+      </div>
+      <div class="form-group row">
+          <label for="diagnosis" class="col-sm-2 col-form-label">Dijagnoza</label>
+          <div class="col-sm-5">
+              <select name="repeatSelect" id="repeatSelect" (change)="changeSelectedDiagnosis($event.target.value)"
+                  class="form-control">
+                  <option value={{null}}></option>
+                  <option *ngFor="let diagnosis1 of diagnosises" value="{{diagnosis1.id}}">
+                      {{diagnosis1.name}}
+                  </option>
+              </select>
+
+          </div>
+      </div>
+      <div class="form-group row">
+          <label for="medicine" class="col-sm-2 col-form-label">Prepisan lek</label>
+          <div class="col-sm-5">
+              <select name="repeatSelect" id="repeatSelect2" (change)="changeSelectedMedicine($event.target.value)"
+                  class="form-control">
+                  <option value={{null}}></option>
+                  <option *ngFor="let medicine1 of medicines" value="{{medicine1.id}}">
+                      {{medicine1.name}}
+                  </option>
+              </select>
+          </div>
+      </div>
+      <div class="form-group row">
+          <div class="col-sm-2">
+              <button (click)="promeni()" class="btn btn-primary">Potvrdi</button>
+          </div>
+      </div>
+  </form>
+</div>

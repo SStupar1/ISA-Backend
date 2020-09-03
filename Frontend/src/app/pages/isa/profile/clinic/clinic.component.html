@@ -1,0 +1,40 @@
+<div class="profileWrapper">
+  <form nz-form [formGroup]="validateForm" class="profileForm">
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>Naziv</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="name" formControlName="name" placeholder="naziv" />
+        <nz-form-explain *ngIf="validateForm.get('name')?.dirty && validateForm.get('name')?.errors"
+          >Unesite naziv!</nz-form-explain
+        >
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="address" nzRequired>Adresa</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="address" formControlName="address" placeholder="adresa" />
+        <nz-form-explain *ngIf="validateForm.get('address')?.dirty && validateForm.get('address')?.errors"
+          >Unesite adresu!</nz-form-explain
+        >
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="description" nzRequired>Opis</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="description" formControlName="description" placeholder="opis" />
+        <nz-form-explain *ngIf="validateForm.get('description')?.dirty && validateForm.get('description')?.errors"
+          >Unesite opis!</nz-form-explain
+        >
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item *ngIf="!isReadOnly" nz-row style="margin-bottom:8px;">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button (click)="update()" nz-button nzType="primary">Sacuvaj</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>

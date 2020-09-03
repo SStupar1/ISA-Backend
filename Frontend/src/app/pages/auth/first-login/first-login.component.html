@@ -1,0 +1,29 @@
+<div class="firstLoginWrapper">
+  <form nz-form [formGroup]="validateForm" class="first-login-form" (ngSubmit)="submitForm()">
+
+    <nz-form-item>
+      <nz-form-control>
+        <nz-input-group nzPrefixIcon="lock">
+          <input type="password" nz-input formControlName="password" placeholder="Nova lozinka" />
+        </nz-input-group>
+        <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors">Unesite novu lozinku!</nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <nz-input-group nzPrefixIcon="lock">
+            <input type="password" nz-input formControlName="rePassword" placeholder="Potvrda nove lozinke" />
+          </nz-input-group>
+          <nz-form-explain *ngIf="validateForm.get('rePassword')?.dirty && validateForm.get('rePassword')?.errors">Potvrdite novu lozinku!</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      
+      <nz-form-control>
+        <button nz-button class="login-form-button" [nzType]="'primary'" [disabled]="!validateForm.valid">Potvrdi</button>
+      </nz-form-control>
+    </nz-form-item>
+
+  </form>
+  </div>

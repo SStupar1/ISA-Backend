@@ -1,0 +1,37 @@
+<nz-date-picker [(ngModel)]="date"></nz-date-picker>
+
+  <br />
+  <br />
+
+<nz-time-picker [(ngModel)]="time" [nzDefaultOpenValue]="defaultOpenValue"></nz-time-picker>
+    
+  <br />
+  <br />
+
+<nz-select
+  style="width: 200px;"
+  nzShowSearchselectedType
+  nzAllowClear
+  nzPlaceHolder="Izaberite lekara"
+  [(ngModel)]="selectedDoctor"
+>
+<nz-option *ngFor="let item of listOfData" [nzValue]="item.id" [nzLabel]="item.firstName"></nz-option>
+</nz-select>
+
+<br />
+<br />
+
+<nz-select
+  style="width: 200px;"
+  nzShowSearchselectedType
+  nzAllowClear
+  nzPlaceHolder="Izaberite salu"
+  [(ngModel)]="selectedEr"
+>
+<nz-option *ngFor="let item of listOfData2" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
+</nz-select>
+
+<br />
+<br />
+
+<button (click)="onSearch()" nz-button nzType="primary" nzGhost>Zakazi</button>

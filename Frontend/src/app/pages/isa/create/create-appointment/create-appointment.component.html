@@ -1,0 +1,82 @@
+<div class="firstLoginWrapper">
+  <form nz-form [formGroup]="validateForm" class="first-login-form" (ngSubmit)="submitForm()">
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="appointmentDate" nzRequired>
+        <span>
+          Datum
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="appointmentDate" formControlName="appointmentDate"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="localTime" nzRequired>
+        <span>
+          Vreme
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="localTime" formControlName="localTime"/>
+      </nz-form-control>
+    </nz-form-item>
+      
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="appointmentTypeName" nzRequired>
+        <span>
+          Tip pregleda
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="appointmentTypeName" formControlName="appointmentTypeName"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="clinicName" nzRequired>
+        <span>
+          Klinika
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="clinicName" formControlName="clinicName"/>
+      </nz-form-control>
+    </nz-form-item>
+
+  </form>
+
+  <!-- <nz-select
+  style="width: 200px;"
+  nzShowSearchselectedType
+  nzAllowClear
+  nzPlaceHolder="Izaberite salua"
+  [(ngModel)]="selectedEr"
+>
+<nz-option *ngFor="let item of listOfData" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
+</nz-select> -->
+
+<nz-table #basicTable [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th>Broj</th>
+      <th>Naziv</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.number }}</td>
+      <td>{{ data.name }}</td>
+      <td>
+        <!-- <a (click)="onChoose(data.id)">Izaberi</a> -->
+        <button (click)="onChoose(data.id)" nz-button nzType="primary" nzGhost>Izaberi</button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<br/>
+<button *ngIf="showSuggestion" (click)="useAuto()" nz-button nzType="primary" nzGhost>Automatski zakazi</button>
+<button (click)="cancel()" nz-button nzType="danger" nzGhost>Otkazi</button>
+  </div>

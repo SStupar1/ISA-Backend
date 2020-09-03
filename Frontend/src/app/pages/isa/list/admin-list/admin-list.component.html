@@ -1,0 +1,28 @@
+<nz-table #basicTable [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th>Ime</th>
+      <th>Prezime</th>
+      <th>Email</th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.firstName }}</td>
+      <td>{{ data.lastName }}</td>
+      <td>{{ data.email }}</td>
+      <!-- <td>
+        <a (click)="onProfil(data.id)">Profil</a>
+      </td> -->
+      <td>
+        <button (click)="onProfil(data.id)" nz-button nzType="primary" nzGhost>Profil</button>
+      </td>
+      <td *ngIf="data.adminType === 'ADMIN'">
+        <!-- <a (click)="onDelete(data.id)">Ukloni</a> -->
+        <button (click)="onDelete(data.id)" nz-button nzType="danger" nzGhost>Ukloni</button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

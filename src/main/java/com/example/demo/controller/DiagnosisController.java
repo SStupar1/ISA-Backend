@@ -21,6 +21,8 @@ public class DiagnosisController {
     @Autowired
     private DiagnosisService diagnosisService;
 
+
+
     @RequestMapping(value = "/addDiagnosis",consumes = "application/json")
     @PreAuthorize(AuthoritiesConstants.ADMIN_PATIENT_MEDICAL_ROLE)
     public ResponseEntity<?> addMedicine(@RequestBody DiagnosisDTORequest diagnosisDTO){
@@ -44,4 +46,3 @@ public class DiagnosisController {
         return new ResponseEntity<>(diagnosisDTOS,HttpStatus.OK);
     }
 }
-

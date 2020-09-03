@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.dto.request.CreateErRequest;
 import com.example.demo.dto.request.UpdateErRequest;
 import com.example.demo.dto.response.ErResponse;
+import com.example.demo.entity.Er;
 import com.example.demo.security.AuthoritiesConstants;
 import com.example.demo.service.IErService;
 import org.springframework.security.access.prepost.PreAuthorize;

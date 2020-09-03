@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
-import com.example.demo.utils.enums.MedicalType;
-import com.example.demo.utils.enums.MedicalType;
+import com.example.demo.util.enums.MedicalType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -55,5 +54,5 @@ public class MedicalStaff extends BaseEntity {
 
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Grade> grades;
-
 }
+

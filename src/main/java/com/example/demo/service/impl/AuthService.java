@@ -17,7 +17,7 @@ import com.example.demo.security.DomainUserDetailsService;
 import com.example.demo.service.IAuthService;
 import com.example.demo.service.IClinicService;
 import com.example.demo.service.ITokenProvider;
-import com.example.demo.utils.enums.UserType;
+import com.example.demo.util.enums.UserType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -187,8 +187,8 @@ public class AuthService implements IAuthService {
         if (user.getUserType().equals(UserType.PATIENT)) {
             id = user.getPatient().getId();
         } else if (user.getUserType().equals(UserType.MEDICAL)) {
-            id = user.getMedicalStaff().getId();
-            clinicId = user.getMedicalStaff().getClinic().getId();
+             id = user.getMedicalStaff().getId();
+             clinicId = user.getMedicalStaff().getClinic().getId();
         } else if (user.getUserType().equals(UserType.ADMIN)) {
             id = user.getAdmin().getId();
             clinicId = user.getAdmin().getClinic().getId();

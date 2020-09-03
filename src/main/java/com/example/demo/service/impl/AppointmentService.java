@@ -1,6 +1,5 @@
 package com.example.demo.service.impl;
 
-
 import com.example.demo.dto.request.AppointmentSearchRequest;
 import com.example.demo.dto.request.DoctorSearchRequest;
 import com.example.demo.dto.request.ErAvailableRequest;
@@ -13,8 +12,8 @@ import com.example.demo.entity.*;
 import com.example.demo.repository.*;
 import com.example.demo.service.IAppointmentRequestService;
 import com.example.demo.service.IAppointmentService;
-import com.example.demo.utils.enums.CalendarType;
-import com.example.demo.utils.enums.MedicalType;
+import com.example.demo.util.enums.CalendarType;
+import com.example.demo.util.enums.MedicalType;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -86,12 +85,12 @@ public class AppointmentService implements IAppointmentService {
                     }
                     List<Calendar> unavailablePeriods = calendars.stream().filter(calendar ->
                             calendar.getStartAt().isBefore(localTime)
-                                    && calendar.getEndAt().isAfter(localTime)
-                                    && calendar.getCalendarType().equals(CalendarType.WORKING)
+                            && calendar.getEndAt().isAfter(localTime)
+                            && calendar.getCalendarType().equals(CalendarType.WORKING)
 //                            && calendar.getDate().equals(request.getDate()))
-                                    && calendar.getDate().getYear() == request.getDate().getYear()
-                                    && calendar.getDate().getMonth() == request.getDate().getMonth()
-                                    && calendar.getDate().getDay() == request.getDate().getDay())
+                            && calendar.getDate().getYear() == request.getDate().getYear()
+                            && calendar.getDate().getMonth() == request.getDate().getMonth()
+                            && calendar.getDate().getDay() == request.getDate().getDay())
                             .collect(Collectors.toList());
                     if(!unavailablePeriods.isEmpty() || calendars.stream().anyMatch(calendar -> calendar.getDate().getYear() == request.getDate().getYear()
                             && calendar.getDate().getMonth() == request.getDate().getMonth()
@@ -136,8 +135,8 @@ public class AppointmentService implements IAppointmentService {
                                     && calendar.getDate().getDay() == request.getDate().getDay())
                             .collect(Collectors.toList());
                     if(!unavailablePeriods.isEmpty() || calendars.stream().anyMatch(calendar -> calendar.getDate().getYear() == request.getDate().getYear()
-                            && calendar.getDate().getDay() == request.getDate().getDay() && calendar.getDate().getMonth() == request.getDate().getMonth()
-                            && calendar.getCalendarType().equals(CalendarType.ABSENT))) {
+                        && calendar.getDate().getDay() == request.getDate().getDay() && calendar.getDate().getMonth() == request.getDate().getMonth()
+                        && calendar.getCalendarType().equals(CalendarType.ABSENT))) {
                         return false;
                     } else {
                         return true;

@@ -7,8 +7,9 @@ import com.example.demo.entity.*;
 import com.example.demo.repository.*;
 import com.example.demo.service.IMedicalStaffService;
 import com.example.demo.service.IUserService;
-import com.example.demo.utils.enums.UserType;
+import com.example.demo.util.enums.UserType;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;

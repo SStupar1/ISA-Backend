@@ -9,7 +9,7 @@ import com.example.demo.service.IAdminService;
 import com.example.demo.service.IAppointmentService;
 import com.example.demo.service.IClinicService;
 import com.example.demo.service.IMedicalStaffService;
-import com.example.demo.utils.enums.MedicalType;
+import com.example.demo.util.enums.MedicalType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 

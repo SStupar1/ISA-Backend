@@ -10,7 +10,7 @@ import com.example.demo.repository.IAdminRepository;
 import com.example.demo.repository.IMedicalStaffRepository;
 import com.example.demo.repository.IPatientRepository;
 import com.example.demo.service.IUserService;
-import com.example.demo.utils.enums.UserType;
+import com.example.demo.util.enums.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;

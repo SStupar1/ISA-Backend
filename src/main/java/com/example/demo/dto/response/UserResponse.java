@@ -1,7 +1,7 @@
 package com.example.demo.dto.response;
 
-import com.example.demo.utils.enums.AdminType;
-import com.example.demo.utils.enums.UserType;
+import com.example.demo.util.enums.AdminType;
+import com.example.demo.util.enums.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

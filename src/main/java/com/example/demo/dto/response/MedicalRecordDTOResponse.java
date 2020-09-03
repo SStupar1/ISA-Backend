@@ -1,9 +1,11 @@
 package com.example.demo.dto.response;
+
 import com.example.demo.entity.MedicalRecord;
 import com.example.demo.entity.Patient;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
 
 @Getter
 @Setter

@@ -1,5 +1,6 @@
 package com.example.demo.dto.request;
 
+import com.example.demo.util.enums.AdminType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,8 @@ public class CreateAdminRequest {
     private String password;
 
     private String rePassword;
+
+    //private AdminType adminType;
 
     private UUID clinicId;
 }

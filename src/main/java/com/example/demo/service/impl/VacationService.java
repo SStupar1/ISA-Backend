@@ -7,7 +7,7 @@ import com.example.demo.repository.ICalendarRepository;
 import com.example.demo.repository.IMedicalStaffRepository;
 import com.example.demo.service.IEmailService;
 import com.example.demo.service.IVacationService;
-import com.example.demo.utils.enums.CalendarType;
+import com.example.demo.util.enums.CalendarType;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;

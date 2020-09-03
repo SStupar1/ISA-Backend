@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
-import com.example.demo.utils.enums.RequestStatus;
+import com.example.demo.util.enums.AppointmentTypeEnum;
+import com.example.demo.util.enums.RequestStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AppointmentRequest extends BaseEntity {
+
+    @Version
+    @Column(name="version",columnDefinition = "integer DEFAULT 0",nullable = false)
+    private int version;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "appointmentType_id", referencedColumnName = "id")

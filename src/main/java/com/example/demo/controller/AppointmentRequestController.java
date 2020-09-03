@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-
 import com.example.demo.dto.request.*;
 import com.example.demo.dto.response.AppointmentRequestNewResponse;
 import com.example.demo.dto.response.AppointmentRequestResponse;
@@ -94,4 +93,3 @@ public class AppointmentRequestController {
         return _potentialAppointmentService.getAllPotentialAppointmentRequest();
     }
 }
-

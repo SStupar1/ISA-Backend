@@ -13,4 +13,3 @@ public interface IUserRepository extends JpaRepository<User, UUID> {
 
     User findOneByEmail(String email);
 }
-

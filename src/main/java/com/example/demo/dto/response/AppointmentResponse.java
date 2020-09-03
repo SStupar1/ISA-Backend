@@ -1,6 +1,7 @@
 package com.example.demo.dto.response;
 
-import com.example.demo.utils.enums.AppointmentTypeEnum;
+
+import com.example.demo.util.enums.AppointmentTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

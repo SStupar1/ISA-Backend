@@ -1,7 +1,6 @@
-package com.example.demo.dto.request;
+package com.example.demo.entity;
 
-import com.example.demo.entity.BaseEntity;
-import com.example.demo.utils.enums.RequestStatus;
+import com.example.demo.util.enums.RequestStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

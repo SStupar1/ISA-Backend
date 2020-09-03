@@ -15,4 +15,3 @@ public class PatientFilterRequest {
 
     private String ssn;
 }
-

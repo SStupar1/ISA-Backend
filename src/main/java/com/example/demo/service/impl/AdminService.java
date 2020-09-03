@@ -1,6 +1,5 @@
 package com.example.demo.service.impl;
 
-
 import com.example.demo.dto.request.CreateAdminRequest;
 import com.example.demo.dto.request.CreateUserRequest;
 import com.example.demo.dto.request.UpdateAdminRequest;
@@ -13,8 +12,8 @@ import com.example.demo.repository.IClinicRepository;
 import com.example.demo.repository.IUserRepository;
 import com.example.demo.service.IAdminService;
 import com.example.demo.service.IUserService;
-import com.example.demo.utils.enums.AdminType;
-import com.example.demo.utils.enums.UserType;
+import com.example.demo.util.enums.AdminType;
+import com.example.demo.util.enums.UserType;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

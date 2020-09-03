@@ -1,7 +1,7 @@
 package com.example.demo.dto.response;
 
 import com.example.demo.entity.Clinic;
-import com.example.demo.utils.enums.MedicalType;
+import com.example.demo.util.enums.MedicalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

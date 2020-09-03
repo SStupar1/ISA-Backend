@@ -15,6 +15,9 @@ import com.example.demo.repository.IErAppointmentPeriodRepository;
 import com.example.demo.service.IClinicCenterService;
 import com.example.demo.service.IClinicService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -46,6 +49,7 @@ public class ClinicService implements IClinicService {
         ClinicCenterResponse clinicCenterResponse = _clinicCenterService.createClinicCenter(clinicCenterRequest);
         // Transform to user entity
         ClinicCenter clinicCenter = _clinicCenterRepository.findOneById(clinicCenterResponse.getId());
+        //user.setId(userResponse.getId());
 
         Clinic clinic = new Clinic();
         clinic.setClinicCenter(clinicCenter);

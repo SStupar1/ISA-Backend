@@ -1,12 +1,11 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.request.ConfirmAppointmentRequest;
-import com.example.demo.dto.request.CreateAppointmentRequestAsDoctorRequest;
-import com.example.demo.dto.request.CreateAppointmentRequestRequest;
-import com.example.demo.dto.request.ErAvailableRequest;
+
+import com.example.demo.dto.request.*;
 import com.example.demo.dto.response.AppointmentRequestNewResponse;
 import com.example.demo.dto.response.AppointmentRequestResponse;
 import com.example.demo.dto.response.ErResponse;
+import com.example.demo.entity.AppointmentRequest;
 
 import java.util.List;
 import java.util.UUID;

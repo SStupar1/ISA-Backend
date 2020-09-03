@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-
 import com.example.demo.dto.request.MedicalExaminationReportDTORequest;
 import com.example.demo.dto.response.MedicalExaminationDTOResponse;
 import com.example.demo.dto.response.MedicalRecordDTOResponse;

@@ -1,6 +1,6 @@
 package com.example.demo.dto.response;
 
-import com.example.demo.utils.enums.RequestStatus;
+import com.example.demo.util.enums.RequestStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,12 +1,12 @@
 package com.example.demo.service.impl;
 
-
 import com.example.demo.dto.request.DiagnosisDTORequest;
 import com.example.demo.entity.Diagnosis;
 import com.example.demo.repository.DiagnosisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;

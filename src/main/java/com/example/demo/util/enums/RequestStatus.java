@@ -1,4 +1,4 @@
-package com.example.demo.utils.enums;
+package com.example.demo.util.enums;
 
 public enum RequestStatus {
     APPROVED,
@@ -7,4 +7,3 @@ public enum RequestStatus {
     CONFIRMED,
     PREDEF
 }
-

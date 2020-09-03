@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-
 import com.example.demo.dto.request.RecipeDTORequest;
 import com.example.demo.dto.response.RecipeDTOResponse;
 import com.example.demo.entity.Recipe;
@@ -50,3 +49,4 @@ public class RecipeController {
 
     }
 }
+

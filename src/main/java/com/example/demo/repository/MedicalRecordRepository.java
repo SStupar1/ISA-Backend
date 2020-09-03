@@ -24,4 +24,3 @@ public interface MedicalRecordRepository extends JpaRepository<MedicalRecord,Lon
                             @Param("bloodType") String blood_type,
                             @Param("id") Long id);
 }
-

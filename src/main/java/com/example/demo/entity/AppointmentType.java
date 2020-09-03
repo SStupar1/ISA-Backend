@@ -17,4 +17,3 @@ public class AppointmentType extends BaseEntity {
 
     boolean isDeleted;
 }
-

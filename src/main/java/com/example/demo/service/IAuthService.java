@@ -19,4 +19,3 @@ public interface IAuthService {
 
     void updatePasswordAdmin(UUID id, UpdatePasswordRequest request) throws Exception;
 }
-

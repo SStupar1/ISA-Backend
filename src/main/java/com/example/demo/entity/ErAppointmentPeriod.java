@@ -21,6 +21,10 @@ public class ErAppointmentPeriod extends BaseEntity {
     @JoinColumn(name = "er_id", nullable = false)
     private Er er;
 
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "appointment_period_id")
+//    private AppointmentPeriod appointmentPeriod;
+
     private Date date;
 
     private LocalTime startAt;

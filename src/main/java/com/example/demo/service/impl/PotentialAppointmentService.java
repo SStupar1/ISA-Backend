@@ -1,6 +1,5 @@
 package com.example.demo.service.impl;
 
-
 import com.example.demo.dto.request.CreateErAppointmentRequest;
 import com.example.demo.dto.request.ScheduleAppointmentRequest;
 import com.example.demo.dto.response.AppointmentRequestNewResponse;
@@ -8,8 +7,8 @@ import com.example.demo.entity.*;
 import com.example.demo.repository.*;
 import com.example.demo.service.IEmailService;
 import com.example.demo.service.IPotentialAppointmentService;
-import com.example.demo.utils.enums.CalendarType;
-import com.example.demo.utils.enums.RequestStatus;
+import com.example.demo.util.enums.CalendarType;
+import com.example.demo.util.enums.RequestStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

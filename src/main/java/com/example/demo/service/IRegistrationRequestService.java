@@ -8,5 +8,11 @@ import java.util.UUID;
 
 public interface IRegistrationRequestService {
 
+    List<RegistrationRequestResponse> getAll();
+
+    void approveRegistrationRequest(UUID id) throws Exception;
+
+    void denyRegistrationRequest(UUID id) throws Exception;
+
     void createRegistrationRequest(CreatePatientRequest request);
 }

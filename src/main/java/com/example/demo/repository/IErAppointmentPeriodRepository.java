@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+
+import com.example.demo.entity.Er;
 import com.example.demo.entity.ErAppointmentPeriod;
 import com.example.demo.entity.MedicalStaff;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,6 +17,10 @@ public interface IErAppointmentPeriodRepository extends JpaRepository<ErAppointm
     List<ErAppointmentPeriod> findAllByStartAtGreaterThanAndEndAtBefore(Date startAt, Date endAt);
 
     List<ErAppointmentPeriod> findAllByCalendar_PatientId(UUID id);
+
+//    boolean findAnyByCalendar_MedicalStaff(MedicalStaff medicalStaff);
+//
+//    boolean findAnyByEr(Er er);
 
     ErAppointmentPeriod findOneByCalendar_MedicalStaff(MedicalStaff medicalStaff);
 }

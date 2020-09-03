@@ -1,6 +1,5 @@
 package com.example.demo.service.impl;
 
-
 import com.example.demo.dto.request.ConfirmAppointmentRequest;
 import com.example.demo.dto.request.CreateAppointmentRequestAsDoctorRequest;
 import com.example.demo.dto.request.CreateAppointmentRequestRequest;
@@ -12,8 +11,9 @@ import com.example.demo.entity.*;
 import com.example.demo.repository.*;
 import com.example.demo.service.IAppointmentRequestService;
 import com.example.demo.service.IEmailService;
-import com.example.demo.utils.enums.CalendarType;
-import com.example.demo.utils.enums.RequestStatus;
+import com.example.demo.util.enums.CalendarType;
+import com.example.demo.util.enums.RequestStatus;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -163,8 +163,8 @@ public class AppointmentRequestService implements IAppointmentRequestService {
                     }
 
                     if(!erAppointmentPeriods.stream().anyMatch(x -> x.getDate().getYear() == request.getDate().getYear()
-                            && x.getDate().getMonth() == request.getDate().getMonth()
-                            && x.getDate().getDay() == request.getDate().getDay())) {
+                        && x.getDate().getMonth() == request.getDate().getMonth()
+                        && x.getDate().getDay() == request.getDate().getDay())) {
                         return true;
                     }
 
@@ -172,8 +172,8 @@ public class AppointmentRequestService implements IAppointmentRequestService {
                     LocalTime localTime =  LocalTime.of(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));
 
                     if(!erAppointmentPeriods.stream()
-                            .filter(x -> x.getDate().getYear() == request.getDate().getYear() && x.getDate().getMonth() == request.getDate().getMonth() && x.getDate().getDay() == request.getDate().getDay())
-                            .anyMatch(x -> x.getStartAt().isBefore(localTime) && x.getEndAt().isAfter(localTime))) {
+                        .filter(x -> x.getDate().getYear() == request.getDate().getYear() && x.getDate().getMonth() == request.getDate().getMonth() && x.getDate().getDay() == request.getDate().getDay())
+                        .anyMatch(x -> x.getStartAt().isBefore(localTime) && x.getEndAt().isAfter(localTime))) {
                         return true;
                     }
                     return false;
@@ -220,13 +220,13 @@ public class AppointmentRequestService implements IAppointmentRequestService {
         String[] tokens = request.getCurrentTime().split(":");
         LocalTime currentTime =  LocalTime.of(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));
 
-        boolean isTrue =  medicalStaff.getCalendars().stream()
+       boolean isTrue =  medicalStaff.getCalendars().stream()
                 .anyMatch(calendar -> calendar.getDate().getYear() == now.getYear()
-                        && calendar.getDate().getMonth() == now.getMonth()
-                        && calendar.getDate().getDay() == now.getDay()
-                        && calendar.getStartAt().isBefore(currentTime)
-                        && calendar.getEndAt().isAfter(currentTime)
-                        && calendar.getPatientId().equals(patient.getId()));
+                && calendar.getDate().getMonth() == now.getMonth()
+                && calendar.getDate().getDay() == now.getDay()
+                && calendar.getStartAt().isBefore(currentTime)
+                && calendar.getEndAt().isAfter(currentTime)
+                && calendar.getPatientId().equals(patient.getId()));
 
         if(!isTrue) {
             throw new Exception("Pogresan pacijent");

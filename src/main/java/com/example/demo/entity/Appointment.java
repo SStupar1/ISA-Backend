@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 
-import com.example.demo.utils.enums.AppointmentTypeEnum;
+import com.example.demo.util.enums.AppointmentTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

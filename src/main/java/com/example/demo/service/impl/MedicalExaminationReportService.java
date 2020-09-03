@@ -1,6 +1,5 @@
 package com.example.demo.service.impl;
 
-
 import com.example.demo.dto.request.MedicalExaminationReportDTORequest;
 import com.example.demo.entity.MedicalExaminationReport;
 import com.example.demo.entity.MedicalStaff;

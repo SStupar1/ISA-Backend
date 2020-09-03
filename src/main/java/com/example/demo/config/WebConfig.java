@@ -10,10 +10,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import static org.springframework.http.HttpMethod.*;
 import static org.springframework.http.HttpMethod.OPTIONS;
+
 @Configuration
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
-
     @Bean
     public CorsFilter corsFilter() {
         final CorsConfiguration config = new CorsConfiguration();

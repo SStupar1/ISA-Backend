@@ -4,6 +4,7 @@
       <th>Ime</th>
       <th>Adresa</th>
       <th> </th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
@@ -13,6 +14,9 @@
       <td>
         <!-- <a (click)="onPodaci(data.id)">Podaci</a> -->
         <button (click)="onPodaci(data.id)" nz-button nzType="primary" nzGhost>Podaci</button>
+      </td>
+      <td>
+        <button (click)="avgGrade(data.id)" nz-button nzType="primary" nzGhost>Prosecna ocena</button>
       </td>
     </tr>
   </tbody>

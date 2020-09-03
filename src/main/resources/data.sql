@@ -54,9 +54,7 @@ insert into medical_patient (medical_id, patient_id) values
 ('34b105b1-0e15-4284-8489-c695085d6e96', 'f66a7d1a-c3bc-484e-a93c-3dbad8da713a');
 
 insert into registration_request (id, address, city, country, email, first_name, last_name, password, phone, ssn, status) values
-('f4e88471-2963-43b8-bf62-99cde9a62b9f', 'address', 'city', 'country', 'user6@test.com', 'firstName1', 'lastName1', 'password', '1241241', '2141241', 'PENDING'),
-('63c10d46-357d-4172-9512-005c6fd02247', 'address', 'city', 'country', 'email2@test.com', 'firstName2', 'lastName2', 'password', '1241241', '2141241', 'PENDING'),
-('8bc88bde-1a26-4cb3-97c6-674c900d3ca7', 'address', 'city', 'country', 'email3@test.com', 'firstName3', 'lastName3', 'password', '1241241', '2141241', 'PENDING');
+('f4e88471-2963-43b8-bf62-99cde9a62b9f', 'address', 'city', 'country', 'user6@test.com', 'firstName1', 'lastName1', 'password', '1241241', '2141241', 'PENDING');
 
 --insert into appointment_request (id, appointment_type_id, medical_staff_id, patient_id, status, appointment_date) values
 --('6a7c951e-26fe-44e3-8dd0-6dce920f815c', 'f364f24d-8af4-438b-a858-98b5bec6d797', '887b6506-6998-4db7-84b9-a9a5f24fb430', '11a66abc-f934-4d45-aaec-2060e802a431', 'DENIED', '12-12-2001'),

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClinicService } from 'src/app/services/clinic.service';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-my-clinics-list',
@@ -16,7 +17,7 @@ export class MyClinicsListComponent implements OnInit {
   isVisible = false;
   validateForm: FormGroup;
 
-  constructor(private clinicService: ClinicService, private router: Router, private fb: FormBuilder) { }
+  constructor(private clinicService: ClinicService, private router: Router, private fb: FormBuilder, private message: NzMessageService) { }
 
   ngOnInit() {
     this.setupUser();
@@ -39,8 +40,11 @@ export class MyClinicsListComponent implements OnInit {
     }
 
     this.clinicService.gradeAClinic(body).subscribe(() => {
-      
-    })
+      this.message.info("Uspesno ste ocenili kliniku.");
+    },
+    error => {
+      this.message.info("Vec ste ocenili ovu kliniku.");
+    });
   }
 
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MedicalService } from 'src/app/services/medical.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-medical-list',
@@ -17,7 +18,7 @@ export class MedicalListComponent implements OnInit {
   private form: FormGroup;
   
 
-  constructor(private fb: FormBuilder, private medicalService: MedicalService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder, private medicalService: MedicalService, private router: Router, private route: ActivatedRoute, private message: NzMessageService) { }
 
   ngOnInit() {
     this.setupUser();
@@ -64,6 +65,12 @@ export class MedicalListComponent implements OnInit {
   public submitForm(): void {
     this.medicalService.getA(this.user.myClinic.id, this.form.value).subscribe(data => {
       this.listOfData = data;
+    });
+  }
+
+  avgGrade(id): void{
+    this.medicalService.getDoctorsAvgGrade(id).subscribe(data => {
+      this.message.info('Prosecna ocena je: ' + data.avgGrade);
     });
   }
 

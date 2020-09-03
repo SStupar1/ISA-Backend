@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.request.*;
+import com.example.demo.dto.response.AvgGradeResponse;
 import com.example.demo.dto.response.MedicalStaffResponse;
 import com.example.demo.security.AuthoritiesConstants;
 import com.example.demo.service.IAddGradeService;
@@ -79,8 +80,14 @@ public class MedicalStaffController {
 
     @PostMapping("grade-a-doctor")
     @PreAuthorize(AuthoritiesConstants.PATIENT_ROLE)
-    public void gradeADoctor(@RequestBody  GradeDoctorRequest request) {
+    public void gradeADoctor(@RequestBody  GradeDoctorRequest request) throws Exception {
         _addGradeService.addGrade(request);
+    }
+
+    @GetMapping("avg/{id}/doctor")
+    @PreAuthorize(AuthoritiesConstants.ADMIN_PATIENT_MEDICAL_ROLE)
+    public AvgGradeResponse getDoctorsAvgGrade(@PathVariable UUID id) {
+        return _addGradeService.getDoctorsAvgGrade(id);
     }
 
     @GetMapping("my-doctors/patient/{id}")

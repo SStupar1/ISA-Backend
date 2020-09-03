@@ -5,6 +5,7 @@
       <th>Adresa</th>
       <th> </th>
       <th> </th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,9 @@
       </td>
       <td *ngIf="data.name !== 'Ime 1'">
         <button (click)="onDelete(data.id)" nz-button nzType="danger" nzGhost>Ukloni</button>
+      </td>
+      <td>
+        <button (click)="avgGrade(data.id)" nz-button nzType="primary" nzGhost>Prosecna ocena</button>
       </td>
     </tr>
   </tbody>

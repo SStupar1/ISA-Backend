@@ -3,6 +3,7 @@ import { MedicalService } from 'src/app/services/medical.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-my-doctors-list',
@@ -17,7 +18,7 @@ export class MyDoctorsListComponent implements OnInit {
   isVisible = false;
   validateForm: FormGroup;
 
-  constructor(private medicalService: MedicalService, private router: Router, private fb: FormBuilder) { }
+  constructor(private medicalService: MedicalService, private router: Router, private fb: FormBuilder, private message: NzMessageService) { }
 
   ngOnInit() {
     this.setupUser();
@@ -40,8 +41,11 @@ export class MyDoctorsListComponent implements OnInit {
     }
 
     this.medicalService.gradeMyDoctor(body).subscribe(() => {
-      
-    })
+      this.message.info("Uspesno ste ocenili doktora.");
+    },
+    error => {
+      this.message.info("Vec ste ocenili ovog doktora.");
+    });
   }
 
 

@@ -1,10 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.request.*;
-import com.example.demo.dto.response.ClinicResponse;
-import com.example.demo.dto.response.ErResponse;
-import com.example.demo.dto.response.MedicalStaffResponse;
-import com.example.demo.dto.response.PatientResponse;
+import com.example.demo.dto.response.*;
 import com.example.demo.security.AuthoritiesConstants;
 import com.example.demo.service.*;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -116,14 +113,19 @@ public class ClinicController {
 
     @PostMapping("grade-a-clinic")
     @PreAuthorize(AuthoritiesConstants.PATIENT_ROLE)
-    public void gradeAClinic(@RequestBody  GradeClinicRequest request) {
+    public void gradeAClinic(@RequestBody  GradeClinicRequest request) throws Exception {
         _addGradeService.addGrade(request);
     }
 
     @GetMapping("my-clinics/patient/{id}")
     @PreAuthorize(AuthoritiesConstants.PATIENT_ROLE)
-    public Set<ClinicResponse> getAllMedicalsByAppointmentsByPatients(@PathVariable UUID id) {
+    public Set<ClinicResponse> getAllMedicalsByAppointmentsByPatients(@PathVariable UUID id) throws Exception{
         return _patientService.getClinicsByAppointments(id);
     }
 
+    @GetMapping("avg/{id}/clinic")
+    @PreAuthorize(AuthoritiesConstants.ADMIN_PATIENT_MEDICAL_ROLE)
+    public AvgGradeResponse getClinicsAvgGrade(@PathVariable UUID id) {
+        return _addGradeService.getClinicsAvgGrade(id);
+    }
 }

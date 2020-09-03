@@ -53,6 +53,9 @@ export class MedicalService {
     return this.http.post(`${this.baseUrl}medicalstaff/grade-a-doctor`, body);
   }
   
+  public getDoctorsAvgGrade(id): Observable<any> {
+    return this.http.get(`${this.baseUrl}medicalstaff/avg/${id}/doctor`);
+  }
 
   private buildFilterRequest(filterObject: any): String {
     const values = Object.keys(filterObject).filter(filterValue => filterValue !== null || filterValue !== '');

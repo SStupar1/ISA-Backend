@@ -6,6 +6,7 @@
       <th>Email</th>
       <th> </th>
       <th> </th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,10 @@
       <td *ngIf="isAdmin">
         <!-- <a (click)="onDelete(data.id)">Ukloni</a> -->
         <button (click)="onDelete(data.id)" nz-button nzType="danger" nzGhost>Ukloni</button>
+      </td>
+      <td>
+        <!-- <a (click)="onDelete(data.id)">Ukloni</a> -->
+        <button (click)="avgGrade(data.id)" nz-button nzType="primary" nzGhost>Prosecna ocena</button>
       </td>
     </tr>
   </tbody>

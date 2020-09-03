@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClinicService } from 'src/app/services/clinic.service';
 import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-clinic-list',
@@ -11,7 +12,7 @@ export class ClinicListComponent implements OnInit {
 
   public listOfData = [];
 
-  constructor(private clinicService: ClinicService, private router: Router) { }
+  constructor(private clinicService: ClinicService, private router: Router, private message: NzMessageService) { }
 
   ngOnInit() {
     this.setupData();
@@ -33,4 +34,9 @@ export class ClinicListComponent implements OnInit {
     })
   }
 
+  avgGrade(id): void{
+    this.clinicService.getClinicsAvgGrade(id).subscribe(data => {
+      this.message.info('Prosecna ocena je: ' + data.avgGrade);
+    });
+  }
 }

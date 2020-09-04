@@ -45,6 +45,7 @@ import { AppointmentsByPatientsListComponent } from './pages/isa/list/appointmen
 import { MyDoctorsListComponent } from './pages/isa/list/my-doctors-list/my-doctors-list.component';
 import { MyClinicsListComponent } from './pages/isa/list/my-clinics-list/my-clinics-list.component';
 import { CalendarComponent } from './pages/isa/list/calendar/calendar.component';
+import { MapComponent } from './pages/isa/map/map.component';
 
 const routes: Routes = [
   { path: 'dashboard/medicine-and-diagnosi',pathMatch: 'full',component : AddMedicineAndDiagnosisComponent},
@@ -106,6 +107,7 @@ const routes: Routes = [
       { path: 'my-doctors', component: MyDoctorsListComponent},
       { path: 'my-clinics', component: MyClinicsListComponent},
       { path: 'calendar', component: CalendarComponent},
+      { path: 'google-map', component: MapComponent},
     ]
   },
 ];

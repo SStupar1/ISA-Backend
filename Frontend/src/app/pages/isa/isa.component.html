@@ -13,6 +13,9 @@
           <li *ngIf="checkRole([adminRole]) && !isSuperAdmin" nz-menu-item nzMatchRouter>
             <a (click)="onMedical()">Medicinsko osoblje</a>
           </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/google-map">Mapa</a>
+          </li>
           <li *ngIf="checkRole([adminRole])" nz-menu-item nzMatchRouter>
             <a (click)="onLekoviDijagnoze()">Dodaj lekove i dijagnoze</a> 
           </li>

@@ -33,6 +33,13 @@ public class VacationService implements IVacationService {
         MedicalStaff medicalStaff = _medicalStaffRepository.findOneById(createVacationRequest.getDoctorId());
 
         for(Date date: createVacationRequest.getDates()) {
+            boolean isTrue =  medicalStaff.getCalendars().stream()
+                    .anyMatch(calendar -> calendar.getDate().getYear() == date.getYear()
+                            && calendar.getDate().getMonth() == date.getMonth()
+                            && calendar.getDate().getDay() == date.getDay());
+            if(isTrue){
+                continue;
+            }
             Calendar workCalendar = new Calendar();
             workCalendar.setMedicalStaff(medicalStaff);
             workCalendar.setStartAt(LocalTime.parse("00:00:00"));

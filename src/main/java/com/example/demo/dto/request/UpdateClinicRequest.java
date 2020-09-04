@@ -14,4 +14,8 @@ public class UpdateClinicRequest {
     private String address;
 
     private String description;
+
+    private String lat;
+
+    private String lon;
 }

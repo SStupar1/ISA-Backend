@@ -44,7 +44,9 @@ export class ClinicComponent implements OnInit {
     this.validateForm = this.fb.group({
       name: [ {value: null, disabled: this.isReadOnly }, [Validators.required, Validators.minLength(4)]],
       address: [ {value: null, disabled: this.isReadOnly }, [Validators.required, Validators.minLength(4)]],
-      description: [ {value: null, disabled: this.isReadOnly }, [Validators.required, Validators.minLength(4)]]
+      description: [ {value: null, disabled: this.isReadOnly }, [Validators.required, Validators.minLength(4)]],
+      lat: [ {value: null, disabled: this.isReadOnly }, [Validators.required]],
+      lon: [ {value: null, disabled: this.isReadOnly }, [Validators.required]]
     });
   }
 
@@ -69,7 +71,9 @@ export class ClinicComponent implements OnInit {
         const formValues = {
           name: data.name,
           address: data.address,
-          description: data.description
+          description: data.description,
+          lat: data.lat,
+          lon: data.lon
         }
         this.validateForm.setValue(formValues);
       })
@@ -78,7 +82,9 @@ export class ClinicComponent implements OnInit {
         const formValues = {
           name: data.name,
           address: data.address,
-          description: data.description
+          description: data.description,
+          lat: data.lat,
+          lon: data.lon
         }
         this.validateForm.setValue(formValues);
       })

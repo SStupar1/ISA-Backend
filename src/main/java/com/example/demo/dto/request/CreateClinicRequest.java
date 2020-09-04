@@ -14,4 +14,8 @@ public class CreateClinicRequest {
     private String address;
 
     private String description;
+
+    private String lat;
+
+    private String lon;
 }

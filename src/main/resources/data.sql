@@ -1,10 +1,10 @@
 insert into clinic_center (id) values
 ('b3627b32-6ce7-4fcd-a29a-980c188f42d4');
 
-insert into clinic (id, clinic_center_id, name, address, description, is_deleted) values
-('eaf7dd54-e805-4250-9f79-9baae8866ad6', 'b3627b32-6ce7-4fcd-a29a-980c188f42d4', 'Ime 1', 'Adresa 1', 'Opis 1', false),
-('af37e667-a484-4c8b-8ff9-a4e44b57fde3', 'b3627b32-6ce7-4fcd-a29a-980c188f42d4', 'Ime 2', 'Adresa 2', 'Opis 2', false),
-('188c43b3-454b-4070-91d4-982b711faff7', 'b3627b32-6ce7-4fcd-a29a-980c188f42d4', 'Ime 3', 'Adresa 3', 'Opis 3', false);
+insert into clinic (id, clinic_center_id, name, address, description, is_deleted, lat, lon) values
+('eaf7dd54-e805-4250-9f79-9baae8866ad6', 'b3627b32-6ce7-4fcd-a29a-980c188f42d4', 'Ime 1', 'Adresa 1', 'Opis 1', false,'45.248211', '19.850460'),
+('af37e667-a484-4c8b-8ff9-a4e44b57fde3', 'b3627b32-6ce7-4fcd-a29a-980c188f42d4', 'Ime 2', 'Adresa 2', 'Opis 2', false, '44.772182', '17.191000'),
+('188c43b3-454b-4070-91d4-982b711faff7', 'b3627b32-6ce7-4fcd-a29a-980c188f42d4', 'Ime 3', 'Adresa 3', 'Opis 3', false, '42.442574', '19.268646');
 
 insert into admin (id, admin_type, clinic_id) values
 ('917a4080-375a-4da3-955f-5dfa68ed1dcb', 'SUPER_ADMIN', 'eaf7dd54-e805-4250-9f79-9baae8866ad6'),

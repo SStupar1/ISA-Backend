@@ -40,6 +40,7 @@ public class ClinicService implements IClinicService {
         _erAppointmentPeriodRepository = erAppointmentPeriodRepository;
     }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Override
     public ClinicResponse createClinic(CreateClinicRequest request) throws Exception {
 
@@ -56,6 +57,8 @@ public class ClinicService implements IClinicService {
         clinic.setDescription(request.getDescription());
         clinic.setAddress(request.getAddress());
         clinic.setName(request.getName());
+        clinic.setLat(request.getLat());
+        clinic.setLon(request.getLon());
 
         clinic.setDeleted(false);
 
@@ -64,6 +67,7 @@ public class ClinicService implements IClinicService {
         return mapClinicToClinicResponse(savedClinic);
     }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Override
     public ClinicResponse updateClinic(UUID id, UpdateClinicRequest request) throws Exception {
         Clinic clinic = _clinicRepository.findOneById(id);
@@ -83,6 +87,8 @@ public class ClinicService implements IClinicService {
         clinic.setAddress(request.getAddress());
         clinic.setDescription(request.getDescription());
         clinic.setName(request.getName());
+        clinic.setLat(request.getLat());
+        clinic.setLon(request.getLon());
 
         Clinic savedClinic = _clinicRepository.save(clinic);
 
@@ -96,6 +102,8 @@ public class ClinicService implements IClinicService {
         clinicResponse.setName(clinic.getName());
         clinicResponse.setAddress(clinic.getAddress());
         clinicResponse.setDescription(clinic.getDescription());
+        clinicResponse.setLat(clinic.getLat());
+        clinicResponse.setLon(clinic.getLon());
         return clinicResponse;
     }
 
@@ -110,6 +118,7 @@ public class ClinicService implements IClinicService {
         return mapClinicToClinicResponse(clinic);
     }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Override
     public List<ClinicResponse> getAllCLinics() {
         List<Clinic> clinics = _clinicRepository.findAllByIsDeleted(false);

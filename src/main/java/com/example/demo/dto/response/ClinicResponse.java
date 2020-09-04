@@ -18,4 +18,8 @@ public class ClinicResponse {
     private String address;
 
     private String description;
+
+    private String lat;
+
+    private String lon;
 }

@@ -12,6 +12,8 @@ import com.example.demo.repository.IErAppointmentPeriodRepository;
 import com.example.demo.repository.IErRepository;
 import com.example.demo.service.IErService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -32,6 +34,7 @@ public class ErService implements IErService {
         _erAppointmentPeriodRepository = erAppointmentPeriodRepository;
     }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Override
     public List<ErResponse> getAllErs() {
         List<Er> ers = _erRepository.findAllByIsDeleted(false);
@@ -39,6 +42,7 @@ public class ErService implements IErService {
         return ers.stream().map(er -> mapErToErResponse(er)).collect(Collectors.toList());
     }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Override
     public List<ErResponse> getAllErsByClinic(UUID id) throws Exception {
         List<Er> ers = _erRepository.findAllByClinic_IdAndIsDeleted(id, false);
@@ -46,6 +50,7 @@ public class ErService implements IErService {
         return ers.stream().map(er -> mapErToErResponse(er)).collect(Collectors.toList());
     }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Override
     public ErResponse updateEr(UUID id, UpdateErRequest request) throws Exception {
         Er er = _erRepository.findOneById(id);
@@ -68,6 +73,7 @@ public class ErService implements IErService {
         return mapErToErResponse(savedEr);
     }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Override
     public ErResponse createEr(CreateErRequest request, UUID clinicId) {
         Er er = new Er();
@@ -105,6 +111,7 @@ public class ErService implements IErService {
         _erRepository.save(er);
     }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Override
     public List<ErResponse> getAllErsByClinic(UUID id, ErFilterRequest request) {
         List<Er> ers = _erRepository.findAllByClinic_IdAndIsDeleted(id, false);

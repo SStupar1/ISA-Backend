@@ -31,6 +31,26 @@
       </nz-form-control>
     </nz-form-item>
 
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="lat" nzRequired>Geo. sirina</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="lat" formControlName="lat" placeholder="geografska sirina" />
+        <nz-form-explain *ngIf="validateForm.get('lat')?.dirty && validateForm.get('lat')?.errors"
+          >Unesite geografsku sirinu!</nz-form-explain
+        >
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="lon" nzRequired>Geo. duzina</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="lon" formControlName="lon" placeholder="geografska duzina" />
+        <nz-form-explain *ngIf="validateForm.get('lon')?.dirty && validateForm.get('lon')?.errors"
+          >Unesite geografsku duzinu!</nz-form-explain
+        >
+      </nz-form-control>
+    </nz-form-item>
+
     <nz-form-item *ngIf="!isReadOnly" nz-row style="margin-bottom:8px;">
       <nz-form-control [nzSpan]="14" [nzOffset]="6">
         <button (click)="update()" nz-button nzType="primary">Sacuvaj</button>

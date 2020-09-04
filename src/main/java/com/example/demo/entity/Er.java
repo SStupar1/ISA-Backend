@@ -28,4 +28,9 @@ public class Er extends BaseEntity {
     private List<ErAppointmentPeriod> erAppointmentPeriods;
 
     boolean isDeleted;
+
+    //vise adminitratora ne sme da izmeni istu salu u isto vreme
+    @Version
+    @Column(name="version",columnDefinition = "integer DEFAULT 0",nullable = false)
+    private int version;
 }

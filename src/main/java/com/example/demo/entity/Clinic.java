@@ -40,8 +40,18 @@ public class Clinic extends BaseEntity {
 
     private String description;
 
+    private String lat;
+
+    private String lon;
+
     boolean isDeleted;
 
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Grade> grades;
+
+    //ako je neka klinika izmenjena, dodata ili obrisana u momentu kada je pacijent prikazao klinike, pacijent ce dobiti nevalidne podatke
+    //vise adminitratora ne sme da izmeni istu kliniku u isto vreme
+    @Version
+    @Column(name="version",columnDefinition = "integer DEFAULT 0",nullable = false)
+    private int version;
 }

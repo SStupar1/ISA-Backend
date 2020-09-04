@@ -31,6 +31,9 @@
           <li *ngIf="checkRole([medicalStaffRole])" nz-menu-item nzMatchRouter>
             <a (click)="onPatientsByMedical()">Pacijenti</a>
           </li>
+          <li *ngIf="checkRole([medicalStaffRole])" nz-menu-item nzMatchRouter>
+            <a routerLink="/dashboard/calendar">Radni kalendar</a>
+          </li>
           <!-- <li *ngIf="checkRole([adminRole, medicalStaffRole]) && !isSuperAdmin" nz-menu-item nzMatchRouter>
             <a (click)="onRecipes()">Pacijenti</a>
           </li> -->

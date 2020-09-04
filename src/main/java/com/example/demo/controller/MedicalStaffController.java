@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.request.*;
 import com.example.demo.dto.response.AvgGradeResponse;
+import com.example.demo.dto.response.CalendarResponse;
 import com.example.demo.dto.response.MedicalStaffResponse;
 import com.example.demo.security.AuthoritiesConstants;
 import com.example.demo.service.IAddGradeService;
@@ -94,6 +95,12 @@ public class MedicalStaffController {
     @PreAuthorize(AuthoritiesConstants.PATIENT_ROLE)
     public Set<MedicalStaffResponse> getAllMedicalsByAppointmentsByPatients(@PathVariable UUID id) {
         return _patientService.getDoctorsByAppointments(id);
+    }
+
+    @GetMapping("calendar/{id}")
+    @PreAuthorize(AuthoritiesConstants.MEDICAL_ROLE)
+    public List<CalendarResponse> getWorkCalendar(@PathVariable UUID id){
+        return _medicalStaffService.getWorkCalendar(id);
     }
 }
 

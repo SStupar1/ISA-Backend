@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.dto.request.*;
+import com.example.demo.dto.response.CalendarResponse;
 import com.example.demo.dto.response.MedicalStaffResponse;
 import com.example.demo.dto.response.UserResponse;
 import com.example.demo.entity.*;
@@ -10,6 +11,7 @@ import com.example.demo.service.IUserService;
 import com.example.demo.util.enums.UserType;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -29,13 +31,16 @@ public class MedicalStaffService implements IMedicalStaffService {
 
     private final IErAppointmentPeriodRepository _erAppointmentPeriodRepository;
 
-    public MedicalStaffService(IMedicalStaffRepository medicalStaffRepository, IUserService userService, IUserRepository userRepository, IClinicRepository clinicRepository, IAppointmentTypeRepository appointmentTypeRepository, IErAppointmentPeriodRepository erAppointmentPeriodRepository) {
+    private final ICalendarRepository _calendarRepository;
+
+    public MedicalStaffService(IMedicalStaffRepository medicalStaffRepository, IUserService userService, IUserRepository userRepository, IClinicRepository clinicRepository, IAppointmentTypeRepository appointmentTypeRepository, IErAppointmentPeriodRepository erAppointmentPeriodRepository, ICalendarRepository calendarRepository) {
         _medicalStaffRepository = medicalStaffRepository;
         _userService = userService;
         _userRepository = userRepository;
         _clinicRepository = clinicRepository;
         _appointmentTypeRepository = appointmentTypeRepository;
         _erAppointmentPeriodRepository = erAppointmentPeriodRepository;
+        _calendarRepository = calendarRepository;
     }
 
     @Override
@@ -242,5 +247,22 @@ public class MedicalStaffService implements IMedicalStaffService {
                 .map(medicalStaff -> mapMedicalToMedicalResponse(medicalStaff))
                 .collect(Collectors.toList());
 
+    }
+
+    @Override
+    public List<CalendarResponse> getWorkCalendar(UUID id) {
+        MedicalStaff medicalStaff = _medicalStaffRepository.findOneById(id);
+        List<Calendar> calendars = _calendarRepository.findAllByMedicalStaff(medicalStaff);
+        List<CalendarResponse> responses = new ArrayList<>();
+        for(Calendar c: calendars){
+            if(c.getMedicalStaff() == medicalStaff){
+                CalendarResponse response = new CalendarResponse();
+                String[] tokens = c.getDate().toString().split(" ");
+                response.setDate(tokens[0]);
+                response.setTime(c.getStartAt().toString() + " - " + c.getEndAt().toString());
+                responses.add(response);
+            }
+        }
+        return responses;
     }
 }

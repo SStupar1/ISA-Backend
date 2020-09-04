@@ -44,6 +44,7 @@ import { PredefAppointmentsListComponent } from './pages/isa/list/predef-appoint
 import { AppointmentsByPatientsListComponent } from './pages/isa/list/appointments-by-patients-list/appointments-by-patients-list.component';
 import { MyDoctorsListComponent } from './pages/isa/list/my-doctors-list/my-doctors-list.component';
 import { MyClinicsListComponent } from './pages/isa/list/my-clinics-list/my-clinics-list.component';
+import { CalendarComponent } from './pages/isa/list/calendar/calendar.component';
 
 const routes: Routes = [
   { path: 'dashboard/medicine-and-diagnosi',pathMatch: 'full',component : AddMedicineAndDiagnosisComponent},
@@ -103,7 +104,8 @@ const routes: Routes = [
       { path: 'predef-appointments', component: PredefAppointmentsListComponent},
       { path: 'old-appointments', component: AppointmentsByPatientsListComponent},
       { path: 'my-doctors', component: MyDoctorsListComponent},
-      { path: 'my-clinics', component: MyClinicsListComponent}
+      { path: 'my-clinics', component: MyClinicsListComponent},
+      { path: 'calendar', component: CalendarComponent},
     ]
   },
 ];

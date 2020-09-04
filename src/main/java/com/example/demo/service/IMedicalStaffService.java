@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.request.*;
+import com.example.demo.dto.response.CalendarResponse;
 import com.example.demo.dto.response.MedicalStaffResponse;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface IMedicalStaffService {
     List<MedicalStaffResponse> getAllMedicalStaffByClinic(ClinicIdRequest requestId, MedicalFilterRequest request);
 
     List<MedicalStaffResponse> getAllByClinic(UUID id, MedicalFilterRequest request);
+
+    List<CalendarResponse> getWorkCalendar(UUID id);
 }

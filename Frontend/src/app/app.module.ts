@@ -58,6 +58,7 @@ import { PredefAppointmentsListComponent } from './pages/isa/list/predef-appoint
 import { AppointmentsByPatientsListComponent } from './pages/isa/list/appointments-by-patients-list/appointments-by-patients-list.component';
 import { MyDoctorsListComponent } from './pages/isa/list/my-doctors-list/my-doctors-list.component';
 import { MyClinicsListComponent } from './pages/isa/list/my-clinics-list/my-clinics-list.component';
+import { CalendarComponent } from './pages/isa/list/calendar/calendar.component';
 
 registerLocaleData(en);
 
@@ -107,7 +108,8 @@ registerLocaleData(en);
     PredefAppointmentsListComponent,
     AppointmentsByPatientsListComponent,
     MyDoctorsListComponent,
-    MyClinicsListComponent
+    MyClinicsListComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
